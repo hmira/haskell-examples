@@ -10,6 +10,7 @@ data Bt a = Void
 
 izo :: Int -> (Bt a) -> [Bt a]
 izo 0 a = [a]
+izo 1 (Node Void _ Void) = []
 izo _ Void = []
 izo n (Node l v r)=
 	concat	[
@@ -21,3 +22,13 @@ izo n (Node l v r)=
 		[ (Node r1 v l1) | l1 <- izo ((n-1)-m) l, r1 <- izo m r]
 		| m <- [0..(n-1)]
 		]
+
+{-- 
+
+izo 1 (Node (Node (Node Void 1 Void) 2 (Node Void 3 Void)) 4 (Node Void 6 Void))
+
+Node (Node (Node Void 3 Void) 2 (Node Void 1 Void)) 4 (Node (Node Void 5 Void) 6 (Node Void 7 Void)),
+Node (Node (Node Void 1 Void) 2 (Node Void 3 Void)) 4 (Node (Node Void 7 Void) 6 (Node Void 5 Void)),
+Node (Node (Node Void 5 Void) 6 (Node Void 7 Void)) 4 (Node (Node Void 1 Void) 2 (Node Void 3 Void))]
+
+--}
