@@ -27,8 +27,8 @@ izo n (Node l v r)=
 
 izo 1 (Node (Node (Node Void 1 Void) 2 (Node Void 3 Void)) 4 (Node Void 6 Void))
 
-Node (Node (Node Void 3 Void) 2 (Node Void 1 Void)) 4 (Node (Node Void 5 Void) 6 (Node Void 7 Void)),
-Node (Node (Node Void 1 Void) 2 (Node Void 3 Void)) 4 (Node (Node Void 7 Void) 6 (Node Void 5 Void)),
-Node (Node (Node Void 5 Void) 6 (Node Void 7 Void)) 4 (Node (Node Void 1 Void) 2 (Node Void 3 Void))]
+Node (Node (Node Void 3 Void) 2 (Node Void 1 Void)) 4 (Node (Node Void 5 Void) 6 (Node Void 7 Void))
+Node (Node (Node Void 1 Void) 2 (Node Void 3 Void)) 4 (Node (Node Void 7 Void) 6 (Node Void 5 Void))
+Node (Node (Node Void 5 Void) 6 (Node Void 7 Void)) 4 (Node (Node Void 1 Void) 2 (Node Void 3 Void))
 
 --}
