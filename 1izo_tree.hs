@@ -1,14 +1,23 @@
+{--
+Napište funkci izo i :: Int -> Bt a -> [Bta a],
+ která dostane číslo N a strom S a vyrobí 
+seznam všech stromů, které mají v právě N vrcholech 
+prohozenou pravou a levou větev.
+ --}
+
 data Bt a = Void
 	| Node ( Bt a ) a ( Bt a ) deriving (Show)
 
-kumuluj :: Int -> (Bt a) -> [Bt a]
-kumuluj 0 a = [a]
-kumuluj _ Void = []
-kumuluj 1 (Node l v r)= [ (Node l1 v r) | l1 <- kumuluj 1 l]
-		++	[ (Node l v r1) | r1 <- kumuluj 1 r]
-		++	[ (Node r v l) ]
-
-kumuluj n (Node l v r)=	[ (Node l1 v r) | l1 <- kumuluj n l]
-		++	[ (Node l v r1) | r1 <- kumuluj n r]
-		++	[ (Node r1 v l) | r1 <- kumuluj (n-1) r]
-		++	[ (Node r v l1) | l1 <- kumuluj (n-1) l]
+izo :: Int -> (Bt a) -> [Bt a]
+izo 0 a = [a]
+izo _ Void = []
+izo n (Node l v r)=
+	concat	[
+		[ (Node l1 v r1) | l1 <- izo (n-m) l, r1 <- izo m r]
+		| m <- [0..n]
+		]
+	++
+	concat	[
+		[ (Node r1 v l1) | l1 <- izo ((n-1)-m) l, r1 <- izo m r]
+		| m <- [0..(n-1)]
+		]
